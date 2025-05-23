@@ -17,6 +17,11 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>com.ganteater</groupId>
+			<artifactId>anteater-desktop</artifactId>
+			<version>${ae.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>42.7.4</version>
@@ -45,13 +50,7 @@
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<configuration>
-					<finalName>ae-cli</finalName>
 					<appendAssemblyId>false</appendAssemblyId>
-					<archive>
-						<manifest>
-							<mainClass>com.ganteater.ae.desktop.RecipeRunner</mainClass>
-						</manifest>
-					</archive>
 					<descriptors>
 						<descriptor>src/assembly.xml</descriptor>
 					</descriptors>
@@ -61,11 +60,19 @@
 				</configuration>
 				<executions>
 					<execution>
-						<id>make-assembly</id>
+						<id>desktop</id>
 						<phase>package</phase>
 						<goals>
 							<goal>single</goal>
 						</goals>
+						<configuration>
+							<finalName>anteater</finalName>
+							<archive>
+								<manifest>
+									<mainClass>com.ganteater.ae.desktop.Anteater</mainClass>
+								</manifest>
+							</archive>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
