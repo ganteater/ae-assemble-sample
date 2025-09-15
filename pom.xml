@@ -10,7 +10,7 @@
 	<version>1.0.0</version>
 
 	<properties>
-		<ae.version>1.2.1-SNAPSHOT</ae.version>
+		<ae.version>1.2.4-SNAPSHOT</ae.version>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
 	</properties>
@@ -22,6 +22,11 @@
 			<version>${ae.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>com.ganteater</groupId>
+			<artifactId>anteater-cli</artifactId>
+			<version>${ae.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>42.7.4</version>
@@ -29,12 +34,12 @@
 		<dependency>
 			<groupId>com.ganteater.plugins</groupId>
 			<artifactId>sql-ae-plugin</artifactId>
-			<version>${ae.version}</version>
+			<version>1.2.2</version>
 		</dependency>
 		<dependency>
 			<groupId>com.ganteater.plugins</groupId>
 			<artifactId>jms-ae-plugin</artifactId>
-			<version>${ae.version}</version>
+			<version>1.2.2</version>
 		</dependency>
 	</dependencies>
 
@@ -51,9 +56,6 @@
 				<artifactId>maven-assembly-plugin</artifactId>
 				<configuration>
 					<appendAssemblyId>false</appendAssemblyId>
-					<descriptors>
-						<descriptor>src/assembly.xml</descriptor>
-					</descriptors>
 					<descriptorRefs>
 						<descriptorRef>jar-with-dependencies</descriptorRef>
 					</descriptorRefs>
@@ -72,6 +74,9 @@
 									<mainClass>com.ganteater.ae.desktop.Anteater</mainClass>
 								</manifest>
 							</archive>
+							<descriptors>
+								<descriptor>assembly/assembly.xml</descriptor>
+							</descriptors>
 						</configuration>
 					</execution>
 				</executions>
@@ -96,7 +101,7 @@
 						<classpath />
 						<argument>com.ganteater.ae.desktop.Anteater</argument>
 					</arguments>
-					<workingDirectory>${basedir}/src</workingDirectory>
+					<workingDirectory>${basedir}/target</workingDirectory>
 				</configuration>
 			</plugin>
 		</plugins>
