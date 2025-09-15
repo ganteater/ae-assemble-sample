@@ -4,5 +4,5 @@
 
 ```
 mvn assembly:single
-java -jar target\ae-cli.jar
+java -jar target\anteater.jar
 ```
